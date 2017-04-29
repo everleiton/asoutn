@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4 tooltipped" data-position="right" data-delay="50" data-tooltip="Descripción"><?php echo $row['nombreProducto'];?><i class="mdi-navigation-more-vert right"></i></span>
-            <p><a value="<?php echo $row['codProducto'];?>" href="">Añadir a carrito</a></p>
+            <p><a value="<?php echo $row['codProducto'];?>" href="">Añadir a carrito por ₡<?php echo $row['precio'];?></a></p>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><?php echo $row['nombreProducto'];?> <i class="mdi-navigation-close right"></i></span>
