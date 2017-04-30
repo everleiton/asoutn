@@ -91,6 +91,40 @@ public function insertCompra()
 
 }
 
+public function enviarCorreo(){
+  
+  $ci = get_instance();
+$ci->load->library('email');
+$config['protocol'] = "smtp";
+$config['smtp_host'] = "ssl://smtp.gmail.com";
+$config['smtp_port'] = "465";
+$config['smtp_user'] = "everleitonm@gmail.com"; 
+$config['smtp_pass'] = "Everleiton1997";
+$config['charset'] = "utf-8";
+$config['mailtype'] = "html";
+$config['newline'] = "\r\n";
+
+$ci->email->initialize($config);
+
+$ci->email->from('everleitonm@gmail.com', 'ASOUTN');
+$list = array('everleitonm@gmail.com');
+$ci->email->to($list);
+$this->email->reply_to('everleitonm@gmail.com', 'ASOUTN');
+$ci->email->subject('Confirmación de pedido');
+$ci->email->message('Su pedido fué procesado. La entrega se realizará en los próximos 3 días.');
+
+
+
+
+
+if($ci->email->send()) {
+    echo 'Sent';
+} else {
+    $this->email->print_debugger();
+    echo "No send";
+}
+}
+
 
 }
 

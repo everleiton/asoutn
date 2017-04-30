@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     $queryProductos= "SELECT *FROM productos ";
     $resultadoproductos = $conexion->query($queryProductos);
-    $queryCarritoCont= "SELECT COUNT(id) AS count FROM  usuario_producto";
+    $queryCarritoCont= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto";
     $resultadoCont = $conexion->query($queryCarritoCont);
     while ($row = $resultadoCont->fetch_assoc()) {  
       $contador= $row['count'];
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                <a href="#" id="logo-container" class="brand-logo">ASOUTN</a>
                    <ul class="right hide-on-med-and-down ">
                      <li><a class="hoverable" href="#productosLista">Productos</a></li>
-                    
+                    <li ><a id="Carrito" class="hoverable" href="#team"><i class="material-icons">shopping_cart </i><?php echo $contador;?> Artículos</a></li>
                      <li ><a  id="rowPerfil"class="dropdown-button hoverable" data-activates="dropdown1">           
                       <img class="circle responsive-img" width="50px" height="50px"src="data:image/jpg;base64,<?php echo $imagenPerfil;?>" > 
                        <?php echo $user['name']; ?>
@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Cerrar sesión</a></li>
                            </ul>
                      </li>
-                     <li ><a id="Carrito" class="hoverable" href="#team"><i class="material-icons">shopping_cart </i><?php echo $contador;?> Artículos</a></li>
+                     
                      
                    </ul>
                    <ul id="nav-mobile" class="side-nav">
@@ -126,6 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <div  class="col s12">
                 <h2 class="center header text_h2"><span class="span_h2">Productos que ofrecemos...  </span><br>Aprovecha nuestros precios bajos.</h2>
+            <a href="<?php echo base_url('index.php/Producto/enviarCorreo'); ?>">emmviar enddnkjsnjkc</a>
             </div>
 
           
