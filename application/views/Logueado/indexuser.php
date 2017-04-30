@@ -34,6 +34,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     $queryProductos= "SELECT *FROM productos ";
     $resultadoproductos = $conexion->query($queryProductos);
+    $queryCarritoCont= "SELECT COUNT(id) AS count FROM  usuario_producto";
+    $resultadoCont = $conexion->query($queryCarritoCont);
+    while ($row = $resultadoCont->fetch_assoc()) {  
+      $contador= $row['count'];
+  
+      
+    }
+
   // seteando las cabeceras
   header('Cache-Control: no-cache, no-store, must-revalidate');
   header('Pragma: no-cache');
@@ -79,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Cerrar sesión</a></li>
                            </ul>
                      </li>
-                     <li><a class="hoverable tooltipped" data-position="top" data-delay="50" data-tooltip="Carrito de Compras"  href="#team"><i class="material-icons">shopping_cart</i></a></li>
+                     <li ><a id="Carrito" class="hoverable" href="#team"><i class="material-icons">shopping_cart </i><?php echo $contador;?> Artículos</a></li>
                      
                    </ul>
                    <ul id="nav-mobile" class="side-nav">
@@ -98,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="wowslider-container1">
 <div class="ws_images"><ul>
   <li><a href="http://www.utn.ac.cr"><img src="<?php echo base_url(); ?>slider2/1.png" alt="Visita nuestro sitio web oficial, haciendo click aquí." title="Visita nuestro sitio web oficial, haciendo click aquí." id="wows1_0"/></a></li>
-  <li><img src="<?php echo base_url(); ?>slider2/3.png" alt="wowslider" title="Encuentra materiales promocionales UTN para ir a clases u oficina." id="wows1_1"/></li>
+  <li><img src="<?php echo base_url(); ?>slider2/3.png" alt="" title="Encuentra materiales promocionales UTN para ir a clases u oficina." id="wows1_1"/></li>
   <li><img src="<?php echo base_url(); ?>slider2/2.png" alt="Universidad Técnica Nacional   |   #SomosUTN" title="Universidad Técnica Nacional   |   #SomosUTN" id="wows1_2"/></li>
 </ul></div>
 <div class="ws_bullets"><div>
@@ -133,12 +141,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
       <div class="col s12 m4 l4">
         <div class="card">
-          <div style='width:300;height:300px;' class="card-image waves-effect waves-block waves-light ">
+          <div style='width:200;height:200px;' class="card-image waves-effect waves-block waves-light ">
     <img class="responsive-img" width="100%" height="100%"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > 
           </div>
           <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4 tooltipped" data-position="right" data-delay="50" data-tooltip="Descripción"><?php echo $row['nombreProducto'];?><i class="mdi-navigation-more-vert right"></i></span>
-            <p><a value="<?php echo $row['codProducto'];?>" href="">Añadir a carrito por ₡<?php echo $row['precio'];?></a></p>
+            <span class="card-title activator grey-text text-darken-4 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Descripción"><?php echo $row['nombreProducto'];?><i class="mdi-navigation-more-vert right"></i></span>
+              <form class="form-control" action="<?php echo base_url('index.php/Producto/insertCompra'); ?>" method="post">
+                <div class="inputsInvisibles">
+                  <input class="inputsInvisibles" type="text" name="id_producto" value="<?php echo $row['id'];?>">
+                  <input class="inputsInvisibles"type="text" name="id_usuario" value="<?php echo $user['id'];?>">
+                </div>
+                Cantidad deseada  <input id="cantidadDeseada" type="number" name="cantidadDeseada" value="" min="1" max="10" required></p>
+              <input class=" buttonCompra white-text" type="submit" name="" value="Añadir a carrito por ₡<?php echo $row['precio'];?>">
+          
+              </form>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><?php echo $row['nombreProducto'];?> <i class="mdi-navigation-close right"></i></span>

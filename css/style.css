@@ -17,7 +17,33 @@
 user-select: none;
 
 }
+.buttonCompra{
+  padding: 8px;
+  background-color: #f87600;
+  color: white;
+  border-radius: 15px;
+border: none; 
+transition: all ease .6s;
 
+}
+.inputsInvisibles{
+visibility: hidden;
+width: 0px;
+height: 0px;
+}
+#Carrito{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#cantidadDeseada{
+  width: 50px;
+  text-align: center;
+}
+.buttonCompra:hover{
+    background-color: #002369;
+}
 
 .myfooter{
   height: 350px;
@@ -314,8 +340,8 @@ nav a.button-collapse {
 }
 
 .card-avatar img {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-radius: 75px;
 }
 

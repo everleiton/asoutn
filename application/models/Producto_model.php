@@ -8,7 +8,12 @@ class Producto_model extends CI_Model{
 
 		return $query;	
 	}
-	
+	function insertarProductousuario($productos)
+	{
+		$query = $this->db->insert('usuario_producto',$productos);
+
+		return $query;	
+	}
 	
 
 

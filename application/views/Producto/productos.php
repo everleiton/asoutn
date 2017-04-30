@@ -133,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         
               <div class="itemfooter">
-                <form class="col s12" action="contact.php" method="post">
+                <form class="col s12" action="" method="post">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="mdi-action-account-circle prefix white-text"></i>

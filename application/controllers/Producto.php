@@ -77,7 +77,19 @@ $idU = $this->input->post('codProducto');
  }
 }
 
+public function insertCompra()
+{
+  
+  $this->load->model('Producto_model');
+  $producto['id_usuario'] = $this->input->post('id_usuario');
+  $producto['id_producto'] = $this->input->post('id_producto');
+  $producto['cantidad'] = $this->input->post('cantidadDeseada');
 
+  $this->Producto_model->insertarProductousuario($producto);
+// $this->load->view('/Logueado/indexuser');
+    redirect( base_url('compraRealizada'));
+
+}
 
 
 }
