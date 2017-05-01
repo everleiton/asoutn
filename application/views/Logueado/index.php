@@ -1,12 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
+?> 
 <!DOCTYPE html>
 <html >
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <meta name="theme-color" content="#2196F3">
+  
+
+    
   <title>ASOUTN</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- CSS  -->
@@ -40,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   $this->output->set_header("Pragma: no-cache");
   
   ?>
-  
+
   
 </head>
 <body id="top" class="scrollspy" onload="Materialize.toast('Bienvenido <?php echo $user['name']?>', 3000, 'rounded')">

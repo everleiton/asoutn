@@ -21,7 +21,7 @@ class Mantenimiento extends CI_Controller {
 
   public function pagmantenimiento()
   {
-    $this->load->view('/Maintenance/mantenimientoProductos');
+    $this->load->view('/Maintenance/mantenimiento');
   }
   
   

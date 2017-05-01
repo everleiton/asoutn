@@ -8,6 +8,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <meta name="theme-color" content="#2196F3">
   <title>ASOUTN</title>
+  <script type="text/javascript">
+    header("Location: <?php echo base_url('inicio_principal'); ?>");
+  </script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- CSS  -->
   <link href="<?php echo base_url(); ?>min/plugin-min.css" type="text/css" rel="stylesheet">
@@ -141,10 +144,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       ?>
       
       <div class="col s12 m4 l4">
+        <img class="materialboxed responsive-img" src="data:image/jpg;base64,<?php echo $imagenPro;?>" > 
         <div class="card">
-          <div style='width:200;height:200px;' class="card-image waves-effect waves-block waves-light ">
-            <img class="responsive-img" width="100%" height="100%"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > 
-          </div>
+        
+        
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Descripción"><?php echo $row['nombreProducto'];?><i class="mdi-navigation-more-vert right"></i></span>
             <form class="form-control" action="<?php echo base_url('index.php/Producto/insertCompra'); ?>" method="post">

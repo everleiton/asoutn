@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link href="<?php echo base_url(); ?>min/plugin-min.css" type="text/css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>min/custom-min.css" type="text/css" rel="stylesheet" >
   <script src="https://use.fontawesome.com/df85f162da.js"></script>
+  <script type="text/javascript">
+    header("Location: <?php echo base_url('inicio_principal'); ?>");
+  </script>
   <link href="<?php echo base_url(); ?>css/materialize.min.css" type="text/css" rel="stylesheet" >
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>slider2/style.css" />
@@ -43,6 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
   }
   </script>
+  
+  
 </head>
 <body id="top" class="scrollspy" >
   <div id="loader-wrapper">
@@ -251,9 +256,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
                   <button width="150px"class="btn cyan waves-effect waves-light" type="submit" name="action">Enviar pedido
                         <i class="mdi-content-send"></i>
-                        
-                        
-                      
+
                 </button>
                 </div>
               </div>  

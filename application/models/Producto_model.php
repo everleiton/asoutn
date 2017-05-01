@@ -23,7 +23,13 @@ class Producto_model extends CI_Model{
 	
 		return $query;	
 	}
+	function deleteProducto($producto)
+	{
+		$this->db->WHERE('id', $producto);
+		$query = $this->db->delete('productos');
 	
+		return $query;	
+	}
 	
 	function updateCompra($id){
 		$data = array(

@@ -93,7 +93,13 @@ public function insertCompra()
      redirect( base_url('itemEliminado'));
  }
 
-
+ public function eliminarProducto()
+{
+  $idElim = $this->input->post('idProducto');
+  $this->load->model('Producto_model');
+$this->Producto_model->deleteProducto($idElim);
+    redirect( base_url('mantenimiento'));
+}
 
 
 
