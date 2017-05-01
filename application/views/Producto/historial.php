@@ -130,17 +130,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $imagenPro = base64_encode($row['imagen']);
             $total += $row['PrecioFinal'];   
              $pedidoNumero += $row['id'];
-          
             ?>
             <tr >
-              
               <td><img class="circle responsive-img" width="80px" height="80px"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > </td>
               <td><?php echo $row['nombreProducto'];?></td>
               <td><?php echo $row['CantidadArticulos'];?></td>
               <td>₡<?php echo $row['PrecioUnitario'];?></td>
               <td>₡<?php echo $row['PrecioFinal'];?></td>   
               <td><?php echo $row['estado'];?></td>   
-            
                 <?php  } ?>
               </td>
               <tr>
