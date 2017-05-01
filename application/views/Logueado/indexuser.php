@@ -80,9 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <i class="material-icons right">arrow_drop_down</i>
             </a>
             <ul id="dropdown1" class="dropdown-content">
-              <li>
-                
-              </li>
+                <li><a class="hoverable" href="<?php echo base_url('Producto/historial'); ?>">Historial de compras</a></li>
               <li class="divider"></li>
               <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Cerrar sesión</a></li>
             </ul>

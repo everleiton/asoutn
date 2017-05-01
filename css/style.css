@@ -17,6 +17,55 @@
 user-select: none;
 
 }
+
+#MensajeNoHayNada{
+  width: 100%;
+  height: 180px;
+  border-radius: 15px;
+  background-color: #1B3069;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  overflow: hidden;
+  color: #ffffff;
+}
+#itemMNHNCenter{
+  width: 100%;
+  height: 130px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+}
+#refInicio{
+  padding: 5px;
+  color: #f87600;
+  background-color: #ffffff;
+  border-radius: 50px;
+  font-size: 20px;
+  transition: all ease 1s;
+}
+#refInicio:hover{
+background-color: #f87600;
+    color: #ffffff;
+    padding: 8px;
+}
+
+#itemMNHN{
+  width: 100%;
+  height: 30px;
+    background-color: #f87600;
+}
+
+.mensajito{
+  height: 40px;
+  min-width: 300px;
+  background-color: #f87600;
+  padding: 8px;
+  color: white;
+    border-radius: 15px;
+}
 .buttonCompra{
   padding: 8px;
   background-color: #f87600;
@@ -47,17 +96,17 @@ display: none;
 }
 
 .myfooter{
-  height: 350px;
+  height: 340px;
   width: 100%;
 background-image: url('../img/footer.png');
-background-size: cover;
+background-size: contain;
 display: flex;
 justify-content:space-around;
 align-items: center;
 }
 .itemfooter{
   height: 200PX;
-  width: 300px;  
+  width: 400px;  
 }
 
 .icon-block {

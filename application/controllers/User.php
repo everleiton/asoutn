@@ -70,11 +70,7 @@ class User extends CI_Controller {
 
           $resultado = $conexion->query($query);
 
-  //  $query= "INSERT INTO imagen_perfil (nombre, imagen, id_usuario) VALUES('$nombre', '$Imagen', 'ever')";
 
-  //  $resultado = $conexion->query($query);
-
-//   $this->User_model->insertarfoto($nombre, $Imagen, $idU);
     
   $data['user'] = $this->User_model->insertar($user);
 

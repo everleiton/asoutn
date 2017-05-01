@@ -24,4 +24,14 @@ class Producto_model extends CI_Model{
 		return $query;	
 	}
 	
+	
+	function updateCompra($id){
+		$data = array(
+            'estado' => 'Comprado'  
+        );
+        $this->db->where('id_usuario', $id);
+return $this->db->update('usuario_producto', $data);
+	
+	}
+	
 }
