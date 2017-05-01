@@ -16,6 +16,12 @@ class Producto_model extends CI_Model{
 	}
 	
 
-
+	function deleteItem($producto)
+	{
+		$this->db->WHERE('id', $producto);
+		$query = $this->db->delete('usuario_producto');
+	
+		return $query;	
+	}
 	
 }

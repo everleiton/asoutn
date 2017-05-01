@@ -248,16 +248,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                     <?php    while ($row = $resultadoproductos->fetch_assoc()) { 
                       $imagenPro = base64_encode($row['imagen']);
-                      //$idPro  = $row['codProducto'];
-                      //$query= "SELECT *FROM imagen_producto WHERE id_producto = '$idPro'"; 
-                      //$resultadoImagenProducto = $conexion->query($query);
-                  
-                      
-                      // while ($rowImg = $resultadoImagenProducto->fetch_assoc()) { 
-                    
-                        //  $imagenPro = base64_encode($rowImg['imagen']);
-                      
-                      //  }
+                      /
                       
                       ?>
                   

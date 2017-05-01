@@ -62,5 +62,6 @@ $route['agregarCategoria'] ='Categoria/insert';
 $route['agregarProducto'] ='Producto/insert';  
 $route['mantenimiento'] ='Mantenimiento/pagmantenimiento'; 
 $route['compraRealizada'] ='UsuarioVerificado/main'; 
+$route['itemEliminado'] ='Carrito/carro'; 
 //$route['index'] ='/Logueado/index';
 $route['translate_uri_dashes'] = FALSE;

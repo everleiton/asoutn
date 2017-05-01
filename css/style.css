@@ -30,6 +30,7 @@ transition: all ease .6s;
 visibility: hidden;
 width: 0px;
 height: 0px;
+display: none;
 }
 #Carrito{
 
@@ -42,7 +43,7 @@ height: 0px;
   text-align: center;
 }
 .buttonCompra:hover{
-    background-color: #002369;
+    background-color: #1B3069;
 }
 
 .myfooter{
@@ -75,7 +76,13 @@ th.titulocolumnas{
 
   text-align: center;
 }
-
+#misProductos{
+  visibility: visible;
+  transition: all ease 1s;
+}
+#oculto{
+    transition: all ease 2s;
+}
 
 #intro, #work, #team {padding-top: 4rem;}
 .textohastag{
