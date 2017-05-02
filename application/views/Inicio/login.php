@@ -97,63 +97,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="myfooter"  id="contact">
 
-    
-          <div class="itemfooter">
-            <form class="col s12" action="contact.php" method="post">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-action-account-circle prefix white-text"></i>
-                        <input id="icon_prefix" name="name" type="text" class="validate white-text">
-                        <label for="icon_prefix" class="white-text">Nombre</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="mdi-communication-email prefix white-text"></i>
-                        <input id="icon_email" name="email" type="email" class="validate white-text">
-                        <label for="icon_email" class="white-text">Correo</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <i class="mdi-editor-mode-edit prefix white-text"></i>
-                        <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-                        <label for="icon_prefix2" class="white-text">Mensaje</label>
-                    </div>
-                    <div class="col offset-s7 s5">
-                        <button class="btn waves-effect waves-light blue darken-4" type="submit">Enviar
-                            <i class="mdi-content-send right white-text"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-          </div>
-        
-          <div class="itemfooter">
-              <h5 class="white-text">Social</h5>
-              <ul>
-                  <li>
-                      <a class="white-text" href="">
-                          <i class="small fa fa-facebook-square white-text"></i> Facebook
-                      </a>
-                  </li>
-                  <li>
-                      <a class="white-text" href="">
-                          <i class="small fa fa-twitter-square white-text"></i> Twitter
-                      </a>
-                  </li>
-                  <li>
-                      <a class="white-text" href="">
-                          <i class="small fa fa-instagram white-text"aria-hidden="true"></i> Instagram
-                          
-                      </a>
-                  </li>
-                  <li>
-                      <a class="white-text" href="">
-                          <i class="small fa fa-snapchat" aria-hidden="true"></i> Snapchat
-                      </a>
-                  </li>
-    
-              </ul>
-          </div>
-    
-
 </div>
 
 

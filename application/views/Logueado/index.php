@@ -240,39 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   
       <div class="myfooter"  id="contact">
-        
-        
-      
-        <div class="itemfooter">
-          <h5 class="white-text">Social</h5>
-          <ul>
-            <li>
-              <a class="white-text" href="">
-                <i class="small fa fa-facebook-square white-text"></i> Facebook
-              </a>
-            </li>
-            <li>
-              <a class="white-text" href="">
-                <i class="small fa fa-twitter-square white-text"></i> Twitter
-              </a>
-            </li>
-            <li>
-              <a class="white-text" href="">
-                <i class="small fa fa-instagram white-text"aria-hidden="true"></i> Instagram
-                
-              </a>
-            </li>
-            <li>
-              <a class="white-text" href="">
-                <i class="small fa fa-snapchat" aria-hidden="true"></i> Snapchat
-              </a>
-            </li>
-            
-          </ul>
-        </div>
-        
-        
-      </div>
+       </div>
       
       
       
