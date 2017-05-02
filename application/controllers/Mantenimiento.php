@@ -24,7 +24,10 @@ class Mantenimiento extends CI_Controller {
     $this->load->view('/Maintenance/mantenimiento');
   }
   
-  
+  public function estadisticas()
+  {
+    $this->load->view('/Maintenance/estadisticas');
+  }
   
 
 

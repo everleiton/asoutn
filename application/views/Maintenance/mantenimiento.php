@@ -73,7 +73,7 @@
       <nav id="nav_f" class="blue_color" role="navigation">
         <div class="container">
           <div class="nav-wrapper">
-            <a href="<?php echo base_url('inicio_principal'); ?>" id="logo-container" class="brand-logo">ASOUTN</a>
+            <a href="<?php echo base_url('inicioAdministrador') ?>" id="logo-container" class="brand-logo">ASOUTN</a>
             <ul class="right hide-on-med-and-down ">
               <li><a class="hoverable" href="#intro">Mantenimiento Productos</a></li>
               

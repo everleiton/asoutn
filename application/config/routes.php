@@ -57,10 +57,12 @@ $route['404_override'] = '';
 $route['inicioSesion'] ='User/entrar';
 $route['registro'] ='User/registro';
 $route['inicio_principal'] ='Verifylogin/authenticate';
+
 $route['login'] ='Verifylogin/cerrar_sesion';  
 $route['agregarCategoria'] ='Categoria/insert';  
 $route['agregarProducto'] ='Producto/insert';  
 $route['mantenimiento'] ='Mantenimiento/pagmantenimiento'; 
+$route['estadisticas'] ='Mantenimiento/estadisticas'; 
 $route['productos'] ='UsuarioVerificado/main'; 
 $route['inicioAdministrador'] ='UsuarioVerificado/inicio'; 
 $route['itemEliminado'] ='Producto/carrito'; 

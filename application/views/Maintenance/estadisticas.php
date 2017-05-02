@@ -33,20 +33,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   $query= "SELECT *FROM imagen_perfil WHERE id_usuario = '$idUser'"; $resultado = $conexion->query($query);
   while ($row = $resultado->fetch_assoc()) {  
     $imagenPerfil = base64_encode($row['imagen']);
+    
   }
+  
+  
+  
+  // en codeigniter seria:
   $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
   $this->output->set_header("Pragma: no-cache");
+  
   ?>
   
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
-  <?php 
-  $conexion =new mysqli("localhost", "root", "", "asoutn");
-  $query= "SELECT *FROM imagen_perfil WHERE id_usuario = '$idUser'"; $resultado = $conexion->query($query);
-  $queryProductos= "SELECT *FROM productos ";
-  $resultadoproductos = $conexion->query($queryProductos); ?>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+          var options = {
+              chart: {
+                  renderTo: 'containerGrafico',
+                  plotBackgroundColor: null,
+                  plotBorderWidth: null,
+                  plotShadow: false
+                  
+              },
+              title: {
+                  text: 'Resumen de ingresos por ventas'
+              },
+              tooltip: {
+                  formatter: function() {
+                      return '<b>' + this.point.name + '</b>: ' + this.y;
+                  }
+              },
+              plotOptions: {
+                  pie: {
+                      allowPointSelect: true,
+                      cursor: 'pointer',
+                      dataLabels: {
+                          enabled: true,
+                          color: '#1B3069',
+                          connectorColor: '#f87600',
+                          formatter: function() {
+                              return '<b>' + this.point.name + '</b>: ' +'₡'+ this.y;
+                          }
+                          
+                      },
+                      showInLegend: true
+                  }
+              },
+              series: []
+          };
+
+          $.getJSON("<?php echo base_url() ?>js/pie/data/data-pie-chart.php", function(json) {
+              options.series = json;
+              chart = new Highcharts.Chart(options);
+          });
+          
+      
+      });
+  </script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
   
 </head>
-<body id="top" class="scrollspy" onload="Materialize.toast('Bienvenido USUARIO ADMINISTRADOR ', 3000, 'rounded')">
+<body id="top" class="scrollspy" onload="Materialize.toast('Bienvenido <?php echo $user['name']?>', 3000, 'rounded')">
   
   <!-- Pre Loader -->
   <div id="loader-wrapper">
@@ -62,11 +111,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <nav id="nav_f" class="blue_color" role="navigation">
       <div class="container">
         <div class="nav-wrapper">
-          <a href="#" id="logo-container" class="brand-logo">ASOUTN</a>
+          <a href="<?php echo base_url('inicioAdministrador') ?>" id="logo-container" class="brand-logo">ASOUTN</a>
           <ul class="right hide-on-med-and-down ">
             <li><a class="hoverable" href="<?php echo base_url('mantenimiento'); ?>">Mantenimiento</a></li>
             
-            <li><a class="hoverable" href="<?php echo base_url('estadisticas'); ?>">Estadísticas</a></li>
+            <li><a class="hoverable" href="#team">Estadísticas</a></li>
             <li ><a  id="rowPerfil"class="dropdown-button hoverable" data-activates="dropdown1">  
               
               
@@ -103,29 +152,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--Hero-->
 <div class="section no-pad-bot" id="index-banner">    </div>
 
-<!--  <div class="container">-->
-<div id="wowslider-container1">
-  <div class="ws_images"><ul>
-    <li><a href="www.utn.ac.cr"><img src="<?php echo base_url(); ?>slider2/1.png" alt="Visita nuestro sitio web oficial, haciendo click aquí." title="Visita nuestro sitio web oficial, haciendo click aquí." id="wows1_0"/></a></li>
-    <li><a href="http://wowslider.com"><img src="<?php echo base_url(); ?>slider2/3.png" alt="wowslider" title="Encuentra materiales promocionales UTN para ir a clases u oficina." id="wows1_1"/></a></li>
-    <li><img src="<?php echo base_url(); ?>slider2/2.png" alt="Universidad Técnica Nacional   |   #SomosUTN" title="Universidad Técnica Nacional   |   #SomosUTN" id="wows1_2"/></li>
-  </ul></div>
-  <div class="ws_bullets"><div>
-    <a href="#" title="Visita nuestro sitio web oficial, haciendo click aquí."><span><img src="<?php echo base_url(); ?>slider2/1.png" alt="Visita nuestro sitio web oficial, haciendo click aquí."/>1</span></a>
-    <a href="#" title="Encuentra materiales promocionales UTN para ir a clases u oficina."><span><img src="<?php echo base_url(); ?>slider2/3.png" alt="Encuentra materiales promocionales UTN para ir a clases u oficina."/>2</span></a>
-    <a href="#" title="Universidad Técnica Nacional   |   #SomosUTN"><span><img src="<?php echo base_url(); ?>slider2/2.png" alt="Universidad Técnica Nacional   |   #SomosUTN"/>3</span></a>
-  </div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com/vi">bootstrap carousel</a> by WOWSlider.com v8.7</div>
-  <div class="ws_shadow"></div>
-</div>	
-<script type="text/javascript" src="<?php echo base_url(); ?>slider2/wowslider.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>slider2/script.js"></script>
-
 
 <!--Intro and service-->
 <div id="intro" class="section scrollspy">
 
+  <div class=""><img src="<?php echo base_url(); ?>img/parallax6.png"></div>
   <div class="container">
     <div id="containerGrafico" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+      </div>
+      <div class=""><img src="<?php echo base_url(); ?>img/parallax7.png"></div>
+      <div class="container">
+        
+    
     <script type="text/javascript">
         $(document).ready(function() {
             var options = {
