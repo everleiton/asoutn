@@ -136,10 +136,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           while ($row =$resultadoproductos->fetch_assoc()) { 
             $imagenPro = base64_encode($row['imagen']);
             $total += $row['PrecioFinal'];   
-             $pedidoNumero += $row['id'];
-    $cantidadActual=    $row['CantidadInventario'] -$row['CantidadArticulos'];
-  $var1 = $var1 . $row['idProductoCarrito']  .',';
-  $var2 = $var2 . $cantidadActual .',';
+            $pedidoNumero += $row['id'];
+            $cantidadActual=    $row['CantidadInventario'] -$row['CantidadArticulos'];
+            $var1 = $var1 . $row['idProductoCarrito']  .',';
+              $var2 = $var2 . $cantidadActual .',';
 
           
           

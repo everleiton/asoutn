@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="http://code.highcharts.com/modules/exporting.js"></script>
   
 </head>
-<body id="top" class="scrollspy" onload="Materialize.toast('Bienvenido <?php echo $user['name']?>', 3000, 'rounded')">
+<body id="top" class="scrollspy" >
   
   <!-- Pre Loader -->
   <div id="loader-wrapper">
@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="right hide-on-med-and-down ">
             <li><a class="hoverable" href="<?php echo base_url('mantenimiento'); ?>">Mantenimiento</a></li>
             
-            <li><a class="hoverable" href="#team">Estadísticas</a></li>
+            <li><a class="hoverable" href=""onmouseDown="alert('La opción seleccionada, hace referencia a la página actual.')">Estadísticas</a></li>
             <li ><a  id="rowPerfil"class="dropdown-button hoverable" data-activates="dropdown1">  
               
               

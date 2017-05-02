@@ -75,9 +75,9 @@
           <div class="nav-wrapper">
             <a href="<?php echo base_url('inicioAdministrador') ?>" id="logo-container" class="brand-logo">ASOUTN</a>
             <ul class="right hide-on-med-and-down ">
-              <li><a class="hoverable" href="#intro">Mantenimiento Productos</a></li>
+              <li><a class="hoverable" href=""onmouseDown="alert('La opción seleccionada, hace referencia a la página actual.')">Mantenimiento</a></li>
               
-              <li><a class="hoverable" href="">Contactenos</a></li>
+              <li><a class="hoverable" href="<?php echo base_url('estadisticas'); ?>">Estadísticas</a></li>
               <li ><a  id="rowPerfil"class="dropdown-button hoverable" data-activates="dropdown1">  
                 <img class="circle responsive-img" width="50px" height="50px"src="data:image/jpg;base64,<?php echo $imagenPerfil;?>" > 
                 
@@ -354,10 +354,7 @@
                 
               </div>
             </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">perm_identity</i>Mantenimiento de Usuarios</div><!-- ////////////Usuarios//////-->
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
+          
           </ul>
         </div>
         
