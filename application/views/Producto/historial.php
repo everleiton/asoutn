@@ -21,12 +21,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $user = $_SESSION['user'];
   }
   $idUser= $user['email']; 
+  $idUs= $user['id']; 
   $conexion =new mysqli("localhost", "root", "", "asoutn");
   $query= "SELECT *FROM imagen_perfil WHERE id_usuario = '$idUser'"; $resultado = $conexion->query($query);
   while ($row = $resultado->fetch_assoc()) {  
     $imagenPerfil = base64_encode($row['imagen']);
   }
-  $queryProductos= "SELECT usuario_producto.estado, usuario_producto.id, productos.imagen, productos.nombreProducto, SUM(usuario_producto.cantidad) as CantidadArticulos, productos.precio as PrecioUnitario,(productos.precio*SUM(usuario_producto.cantidad)) as PrecioFinal from usuario_producto Join productos on  usuario_producto.id_producto = productos.id AND usuario_producto.id_usuario = 5 and usuario_producto.estado = 'Comprado' GROUP by productos.nombreProducto ORDER by  productos.nombreProducto ASC ";
+  $queryProductos= "SELECT usuario_producto.estado, usuario_producto.id, productos.imagen, productos.nombreProducto, SUM(usuario_producto.cantidad) as CantidadArticulos, productos.precio as PrecioUnitario,(productos.precio*SUM(usuario_producto.cantidad)) as PrecioFinal from usuario_producto Join productos on  usuario_producto.id_producto = productos.id AND usuario_producto.id_usuario = $idUs and usuario_producto.estado = 'Comprado' GROUP by productos.nombreProducto ORDER by  productos.nombreProducto ASC ";
   $resultadoproductos = $conexion->query($queryProductos);
   $queryCarritoCont= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto WHERE estado ='Comprado'";
   $queryCarritoCont2= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto WHERE estado ='pendiente'";
@@ -64,8 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <i class="material-icons right">arrow_drop_down</i>
             </a>
             <ul id="dropdown1" class="dropdown-content">
-              <li>
-              </li>
+                <li><a class="hoverable" href="<?php echo base_url('Producto/historial'); ?>">Historial de compras</a></li>
               <li class="divider"></li>
               <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Cerrar sesión</a></li>
             </ul>

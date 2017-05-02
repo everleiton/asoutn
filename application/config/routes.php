@@ -57,6 +57,7 @@ $route['404_override'] = '';
 $route['inicioSesion'] ='User/entrar';
 $route['registro'] ='User/registro';
 $route['inicio_principal'] ='Verifylogin/authenticate';
+$route['contactenos'] ='Email/contactenos';
 
 $route['login'] ='Verifylogin/cerrar_sesion';  
 $route['agregarCategoria'] ='Categoria/insert';  

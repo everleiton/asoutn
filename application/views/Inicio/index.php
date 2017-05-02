@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    <ul class="right hide-on-med-and-down ">
                      <li><a class="hoverable" href="#intro">Conocenos</a></li>
                   <li><a class="hoverable" href="#productos">Productos</a></li>
-                     <li><a class="hoverable" href="#Contacto">Contáctenos</a></li>
+                     <li><a class="hoverable" href="<?php echo base_url('contactenos') ?>">Contáctenos</a></li>
                      <li><a class="dropdown-button hoverable" href="#!" data-activates="dropdown1">Entrar
                            <i class="material-icons right">arrow_drop_down</i>
                          </a>
@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                            </ul>
                      </li>
                    </ul>
+                   
                    <ul id="nav-mobile" class="side-nav">
                      <li><a class="hoverable" href="#intro">Conocenos</a></li>
                      
@@ -226,32 +227,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="myfooter"  id="contact">
 
     
-          <div class="itemfooter">
-            <form class="col s12" action="contact.php" method="post">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-action-account-circle prefix white-text"></i>
-                        <input id="icon_prefix" name="name" type="text" class="validate white-text">
-                        <label for="icon_prefix" class="white-text">Nombre</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="mdi-communication-email prefix white-text"></i>
-                        <input id="icon_email" name="email" type="email" class="validate white-text">
-                        <label for="icon_email" class="white-text">Correo</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <i class="mdi-editor-mode-edit prefix white-text"></i>
-                        <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-                        <label for="icon_prefix2" class="white-text">Mensaje</label>
-                    </div>
-                    <div class="col offset-s7 s5">
-                        <button class="btn waves-effect waves-light blue darken-4" type="submit">Enviar
-                            <i class="mdi-content-send right white-text"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-          </div>
         
           <div class="itemfooter">
               <h5 class="white-text">Social</h5>
