@@ -52,8 +52,7 @@ class Email extends CI_Controller {
     
     }
     
-    
-    
+
     
     $ci = get_instance();
     $ci->load->library('email');
