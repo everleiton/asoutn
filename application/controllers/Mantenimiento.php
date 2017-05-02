@@ -25,15 +25,7 @@ class Mantenimiento extends CI_Controller {
   }
   
   
-  public function entrar()
-  {
-    $this->load->view('/Inicio/login');
-  }
   
-  public function registro()
-  {
-    $this->load->view('/Inicio/register');
-  }
 
 
 }
