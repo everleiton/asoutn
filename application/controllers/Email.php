@@ -39,13 +39,7 @@ class Email extends CI_Controller {
     
     $arrayId = explode(",", $var1);
     $arrayCant = explode(",", $var2 );
-  //  var_dump($arrayId);
-    
-    
-      // $cantidadEnInventario=array();
-    //   $cantidadEnInventario = $this->input->post('cantidadEnInventario');
-  //  $cantidadEnInventario = $arayPost;
-    //var_dump($arayPost);
+
     for ($i=0; $i < count($arrayId) ; $i++) { 
     
 
