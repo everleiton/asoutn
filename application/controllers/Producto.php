@@ -32,8 +32,8 @@ class Producto extends CI_Controller {
   
   public function insert()
   {
-  
-  
+    
+    
     $nombreProducto= $this->input->post('nombreProducto');
     $categoria = $this->input->post('categoriaProducto');
     $codProducto = $this->input->post('codProducto');
@@ -41,68 +41,92 @@ class Producto extends CI_Controller {
     $precio = $this->input->post('precio');
     $descripcion = $this->input->post('descripcion');
     $imagen = addslashes(file_get_contents($_FILES['imagenCargada']['tmp_name']));
-  
-
-  
-  
- $nombre =  $this->input->post('photo_nombre');;
-  $Imagen= addslashes(file_get_contents($_FILES['imagenCargada']['tmp_name']));
-$idU = $this->input->post('codProducto');
-
-  $conexion =new mysqli("localhost", "root", "", "asoutn");
-        $query= "INSERT INTO productos (nombreProducto, categoria, codProducto, cantidad, precio, descripcion, imagen) 
-        VALUES('$nombreProducto', '$categoria', '$codProducto', '$cantidad', '$precio', '$descripcion', '$imagen')";
-
-        $resultado = $conexion->query($query);
-        
-        
+    
+    
+    
+    
+    $nombre =  $this->input->post('photo_nombre');;
+    $Imagen= addslashes(file_get_contents($_FILES['imagenCargada']['tmp_name']));
+    $idU = $this->input->post('codProducto');
+    
+    $conexion =new mysqli("localhost", "root", "", "asoutn");
+    $query= "INSERT INTO productos (nombreProducto, categoria, codProducto, cantidad, precio, descripcion, imagen) 
+    VALUES('$nombreProducto', '$categoria', '$codProducto', '$cantidad', '$precio', '$descripcion', '$imagen')";
+    
+    $resultado = $conexion->query($query);
+    
+    
     if (isset($resultado))
     {
-    
+      
       $data['msj'] = "Se ha insertado exitosamente el nuevo producto.";
       
-        redirect( base_url('mantenimiento'),$data);
-    //  $this->load->view('/Maintenance/mantenimientoProductos',$data);
-  }
+      redirect( base_url('mantenimiento'),$data);
+      //  $this->load->view('/Maintenance/mantenimientoProductos',$data);
+    }
     
-   else 
-  { 
-    $data['msj'] = "No se ha insertado";
-    $this->load->view('/Maintenance/mantenimientoProductos',$data);
- }
-}
-
-public function insertCompra()
-{
+    else 
+    { 
+      $data['msj'] = "No se ha insertado";
+      $this->load->view('/Maintenance/mantenimientoProductos',$data);
+    }
+  }
   
-  $this->load->model('Producto_model');
-  $producto['id_usuario'] = $this->input->post('id_usuario');
-  $producto['id_producto'] = $this->input->post('id_producto');
-  $producto['cantidad'] = $this->input->post('cantidadDeseada');
-
-  $this->Producto_model->insertarProductousuario($producto);
-// $this->load->view('/Logueado/indexuser');
+  public function insertCompra()
+  {
+    
+    $this->load->model('Producto_model');
+    $producto['id_usuario'] = $this->input->post('id_usuario');
+    $producto['id_producto'] = $this->input->post('id_producto');
+    $producto['cantidad'] = $this->input->post('cantidadDeseada');
+    
+    $this->Producto_model->insertarProductousuario($producto);
+    // $this->load->view('/Logueado/indexuser');
     redirect( base_url('productos'));
-
-}
+    
+  }
   public function eliminarItemCarrito()
- {
-   $idElim = $this->input->post('idProductoCarrito');
-   $this->load->model('Producto_model');
- $this->Producto_model->deleteItem($idElim);
-     redirect( base_url('itemEliminado'));
- }
-
- public function eliminarProducto()
-{
-  $idElim = $this->input->post('idProducto');
-  $this->load->model('Producto_model');
-$this->Producto_model->deleteProducto($idElim);
+  {
+    $idElim = $this->input->post('idProductoCarrito');
+    $this->load->model('Producto_model');
+    $this->Producto_model->deleteItem($idElim);
+    redirect( base_url('itemEliminado'));
+  }
+  
+  public function eliminarProducto()
+  {
+    $idElim = $this->input->post('idProducto');
+    $this->load->model('Producto_model');
+    $this->Producto_model->deleteProducto($idElim);
     redirect( base_url('mantenimiento'));
-}
+  }
+  public function editarProducto()
+  {
+    $idElim = $this->input->post('idProducto');
+    $nombreProducto = $this->input->post('nombre_product');
+    $cantidad = $this->input->post('cantidadArt');
+    $precio = $this->input->post('precioArt');
+    $descripcion = $this->input->post('descripcion');
+    
+    $this->load->model('Producto_model');
+    
+    
+    $data = array(
+      'nombreProducto' => $nombreProducto, 
+      'cantidad' => $cantidad, 
+      'precio' => $precio, 
+      'descripcion' => $descripcion
+    );
+    
+    
+    $this->Producto_model->updateProducto($data, $idElim);
+    redirect( base_url('mantenimiento'));
+  }
+  
+  
 
-
-
+  
+  
 }
 
 

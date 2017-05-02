@@ -22,11 +22,45 @@ class Email extends CI_Controller {
   
   
   public function enviarCorreo(){
+
+    $this->load->model('Producto_model');
+    
+    
     $nombre  = $this->input->post('nombreUsuario');
     $idUsuario  = $this->input->post('idUsuario');
     $correoU = $this->input->post('correoUsuario');
     $direccion = $this->input->post('direccion');
     $monto = $this->input->post('montocancelar');
+    
+    
+    $var1 = $this->input->post('var1');
+    $var2 = $this->input->post('var2');
+
+    
+    $arrayId = explode(",", $var1);
+    $arrayCant = explode(",", $var2 );
+  //  var_dump($arrayId);
+    
+    
+      // $cantidadEnInventario=array();
+    //   $cantidadEnInventario = $this->input->post('cantidadEnInventario');
+  //  $cantidadEnInventario = $arayPost;
+    //var_dump($arayPost);
+    for ($i=0; $i < count($arrayId) ; $i++) { 
+    
+
+    $data = array(  
+      'cantidad' => $arrayCant[$i] 
+     );
+      
+      
+    $this->Producto_model->updateProducto($data, $arrayId[$i]);
+    
+    }
+    
+    
+    
+    
     $ci = get_instance();
     $ci->load->library('email');
     $config['protocol'] = "smtp";
@@ -53,8 +87,7 @@ class Email extends CI_Controller {
       
       $ci->email->message($stringMessage);
       
-      
-      $this->load->model('Producto_model');
+    
       $this->Producto_model->updateCompra($idUsuario);
       
       
@@ -64,8 +97,8 @@ class Email extends CI_Controller {
           redirect( base_url('Producto/carrito'),$msj);
       } else {
         $msj['msj'] = "No se  ha realado exitosamente su compra, puede revisar la confirmación en su correo.";
-        
-          redirect( base_url('Producto/carrito'),$msj);
+        */
+        //  redirect( base_url('Producto/carrito'),$msj);
       }
       
     }

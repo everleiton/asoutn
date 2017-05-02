@@ -34,24 +34,25 @@ class Mantenimiento extends CI_Controller {
   {
     $this->load->view('/Inicio/register');
   }
-
+/*
   public function insert()
   {
-
-      //$this->load->library('form_validation');
-    //  $this->form_validation->set_rules('name','name','trim|required|min_length[10]');
-    //  $this->form_validation->set_rules('email','email','trim|required');
-    //  $this->form_validation->set_rules('password','password','trim|required');
-        //$this->form_validation->set_rules('photo','photo','trim|required');
+    
+  /*
+      $this->load->library('form_validation');
+   $this->form_validation->set_rules('name','name','trim|required');
+    $this->form_validation->set_rules('email','email','trim|required');
+   $this->form_validation->set_rules('password','password','trim|required');
+    
       
-    //  $this->form_validation->set_message('required', 'Campo %s es obligatorio');
-    //  $this->form_validation->set_message('min_length', 'Campo %s debe tener al menos %s car&aacute;cteres');	
+     $this->form_validation->set_message('required', 'Campo %s es obligatorio');
+    $this->form_validation->set_message('min_length', 'Campo %s debe tener al menos %s car&aacute;cteres');	
       
-    /*  if (!$this->form_validation->run())
+    if (!$this->form_validation->run())
       {
         $this->load->view('/Inicio/register');
       }
-    else{*/
+    else{ 
         $passEncript= md5($this->input->post('password'));
     $this->load->model('User_model');
     $user['email'] = $this->input->post('email');
@@ -59,23 +60,7 @@ class Mantenimiento extends CI_Controller {
     $user['name'] = $this->input->post('name');
     $user['tipo_usuario'] = 2;
     $user['imagen'] = addslashes(file_get_contents($_FILES['imagenCargada']['tmp_name']));
-  
-  /*  $nombre =  $this->input->post('photo_nombre');;
-    $Imagen= addslashes(file_get_contents($_FILES['imagenCargada']['tmp_name']));
-    $idU = $this->input->post('email');
-  
-  
-    
-    $conexion =new mysqli("localhost", "root", "", "asoutn");
-          $query= "INSERT INTO imagen_perfil (nombre, imagen, id_usuario) VALUES('$nombre', '$Imagen', '$idU')";
 
-          $resultado = $conexion->query($query);
-*/
-  //  $query= "INSERT INTO imagen_perfil (nombre, imagen, id_usuario) VALUES('$nombre', '$Imagen', 'ever')";
-
-  //  $resultado = $conexion->query($query);
-
-//   $this->User_model->insertarfoto($nombre, $Imagen, $idU);
     
     $data['user'] = $this->User_model->insertar($user);
 
@@ -83,7 +68,7 @@ class Mantenimiento extends CI_Controller {
   }
   
   
-
+*/
 
 }
   

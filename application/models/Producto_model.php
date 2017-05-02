@@ -40,4 +40,14 @@ return $this->db->update('usuario_producto', $data);
 	
 	}
 	
+	
+	
+	
+	function updateProducto($data,$id){
+	
+				$this->db->where('id', $id);
+return $this->db->update('productos', $data);
+	
+	}
+	
 }

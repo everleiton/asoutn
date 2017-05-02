@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   while ($row = $resultado->fetch_assoc()) {  
     $imagenPerfil = base64_encode($row['imagen']);
   }
-  $queryProductos= "SELECT  usuario_producto.id, productos.imagen, productos.nombreProducto, SUM(usuario_producto.cantidad) as CantidadArticulos, productos.precio as PrecioUnitario,(productos.precio*SUM(usuario_producto.cantidad)) as PrecioFinal from usuario_producto Join productos on  usuario_producto.id_producto = productos.id AND usuario_producto.id_usuario = 5 and usuario_producto.estado = 'pendiente' GROUP by productos.nombreProducto ORDER by  productos.nombreProducto ASC ";
+  $queryProductos= "SELECT productos.id as idProductoCarrito,productos.cantidad as CantidadInventario, usuario_producto.id, productos.imagen, productos.nombreProducto, SUM(usuario_producto.cantidad) as CantidadArticulos, productos.precio as PrecioUnitario,(productos.precio*SUM(usuario_producto.cantidad)) as PrecioFinal from usuario_producto Join productos on  usuario_producto.id_producto = productos.id AND usuario_producto.id_usuario = 5 and usuario_producto.estado = 'pendiente' GROUP by productos.nombreProducto ORDER by  productos.nombreProducto ASC ";
   $resultadoproductos = $conexion->query($queryProductos);
   $queryCarritoCont= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto WHERE estado ='Pendiente'";
   $resultadoCont = $conexion->query($queryCarritoCont);
@@ -129,11 +129,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <tbody>
           <?php $total = 0;
           $pedidoNumero=0;
-          
+          $var1 ="";
+          $var2 = "";
+             //$cantidadEnInventario=array();
           while ($row =$resultadoproductos->fetch_assoc()) { 
             $imagenPro = base64_encode($row['imagen']);
             $total += $row['PrecioFinal'];   
              $pedidoNumero += $row['id'];
+    $cantidadActual=    $row['CantidadInventario'] -$row['CantidadArticulos'];
+  $var1 = $var1 . $row['idProductoCarrito']  .',';
+  $var2 = $var2 . $cantidadActual .',';
+
+          
           
             ?>
             <tr >
@@ -160,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th class="titulocolumnas"  >₡ <?php echo $total ?> </th>
                 <th> </th>
               </tr>
-            
+          
             </tr>
           </tbody>
         </table>
@@ -169,13 +176,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </button>
   </div>
     <?php 
+    
+    echo $var1;
+    echo '<br>';
+    echo $var2;
+    echo '<br>';
+    
+
     } ?>
   
     </div>
   <div id='oculto' style='display:none;'>
       <div class="container">
         <div class="card-panel">
-          <h4 class="header2">Formulario de pago #<?php echo $pedidoNumero ?></h4>
+          <h4 class="header2">Formulario de pago #<?php echo $pedidoNumero ?></h4> 
           <div class="row">
             <form class="col s12" action="<?php echo base_url('Email/enviarCorreo'); ?>" method="post">
               <div class="row">
@@ -250,9 +264,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   
                   <div class="inputsInvisibles">
                     
+                    <!--input class="inputsInvisibles"type="" name="cantidadEnInventario[]" value="<?php //echo $cantidadEnInventario?>"-->
+                    <input type="hidden" name="var1" value="<?php echo $var1 ?>">
+                    <input type="hidden" name="var2" value="<?php echo $var2 ?>">
+
                     <input class="inputsInvisibles"type="text" name="nombreUsuario" value="<?php echo $user['name'];?>">
                     <input class="inputsInvisibles"type="text" name="correoUsuario" value="<?php echo $user['email'];?>">
                     <input class="inputsInvisibles"type="text" name="idUsuario" value="<?php echo $user['id'];?>">
+                    
                   </div>
                   <button width="150px"class="btn cyan waves-effect waves-light" type="submit" name="action">Enviar pedido
                         <i class="mdi-content-send"></i>

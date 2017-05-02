@@ -25,7 +25,7 @@
   $query= "SELECT *FROM imagen_perfil WHERE id_usuario = '$idUser'"; 
   $resultadoUsuario = $conexion->query($query);
   $queryCategorias= "SELECT *FROM lista_categoria ";
-  $queryProductos= "SELECT lista_categoria.nombre_categoria as categoria, productos.id, productos.nombreProducto, productos.codProducto, productos.cantidad, productos.precio, productos.descripcion, productos.imagen from productos join lista_categoria on productos.categoria = lista_categoria.id ";
+  $queryProductos= "SELECT lista_categoria.nombre_categoria as categoria, productos.id, productos.nombreProducto, productos.codProducto, productos.cantidad, productos.precio, productos.descripcion, productos.imagen from productos join lista_categoria on productos.categoria = lista_categoria.id ORDER by productos.nombreProducto";
   $resultadocategorias = $conexion->query($queryCategorias);
   $resultadoproductos = $conexion->query($queryProductos);
   while ($row = $resultadoUsuario->fetch_assoc()) {  
@@ -305,23 +305,23 @@
                           </tr>
                           <tr>
                             <td id="editFade<?php echo $row['id'];?>"style="display: none "colspan="8">
-                              <form class="" action="index.html" method="post">
+                              <form class="" action="<?php echo base_url('/Producto/editarProducto'); ?>" method="post">
                                 <div class="row">
                                   <div class="input-field col s3">
-                                    <input id="name" type="text" value="<?php echo $row['nombreProducto'] ?>"required>
-                                    <label for="first_name" class="">Nombre Producto</label>
+                                    <input id="nombre_product" name="nombre_product" type="text" value="<?php echo $row['nombreProducto'] ?>"required>
+                                    <label for="nombre_product" class="">Nombre Producto</label>
                                   </div>
                                   <div class="input-field col s3">
-                                    <input id="numerotargeta" type="text" value="<?php echo $row['descripcion'] ?>"required>
-                                    <label for="numerotargeta" class="">Descripción</label>
+                                    <input id="descripcion" name="descripcion" type="text" value="<?php echo $row['descripcion'] ?>"required>
+                                    <label for="descripcion" class="">Descripción</label>
                                   </div>
                                   <div class="input-field col s2">
-                                    <input id="numerotargeta" type="number" value="<?php echo $row['cantidad'] ?>"required>
-                                    <label for="numerotargeta" class="">Disponibles</label>
+                                    <input id="cantidadArt" name="cantidadArt" type="number" value="<?php echo $row['cantidad'] ?>"required>
+                                    <label for="cantidadArt" class="">Disponibles</label>
                                   </div>
                                   <div class="input-field col s2">
-                                    <input id="numerotargeta" type="number" value="<?php echo $row['precio'] ?>"required>
-                                    <label for="numerotargeta" class="">Precio</label>
+                                    <input id="precioArt" name="precioArt"type="number" value="<?php echo $row['precio'] ?>"required>
+                                    <label for="precioArt" class="">Precio</label>
                                   </div>
                                   <div class="input-field col s2">
                                     <div class="inputsInvisibles">
