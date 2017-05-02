@@ -108,6 +108,9 @@ display: none;
 .buttonCompra:hover{
     background-color: #1B3069;
 }
+.highcharts-credits{
+  display: none;
+}
 
 .myfooter{
   height: 340px;

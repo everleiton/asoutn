@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="https://use.fontawesome.com/df85f162da.js"></script>
   
   <link href="<?php echo base_url(); ?>css/materialize.min.css" type="text/css" rel="stylesheet" >
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
+
   <!-- Start WOWSlider.com HEAD section -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>slider2/style.css" />
   <script type="text/javascript" src="<?php echo base_url(); ?>slider2/jquery.js"></script>
@@ -43,7 +43,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   $this->output->set_header("Pragma: no-cache");
   
   ?>
+  
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+          var options = {
+              chart: {
+                  renderTo: 'containerGrafico',
+                  plotBackgroundColor: null,
+                  plotBorderWidth: null,
+                  plotShadow: false
+                  
+              },
+              title: {
+                  text: 'Resumen de ingresos por ventas'
+              },
+              tooltip: {
+                  formatter: function() {
+                      return '<b>' + this.point.name + '</b>: ' + this.y;
+                  }
+              },
+              plotOptions: {
+                  pie: {
+                      allowPointSelect: true,
+                      cursor: 'pointer',
+                      dataLabels: {
+                          enabled: true,
+                          color: '#1B3069',
+                          connectorColor: '#f87600',
+                          formatter: function() {
+                              return '<b>' + this.point.name + '</b>: ' +'₡'+ this.y;
+                          }
+                          
+                      },
+                      showInLegend: true
+                  }
+              },
+              series: []
+          };
 
+          $.getJSON("<?php echo base_url() ?>js/pie/data/data-pie-chart.php", function(json) {
+              options.series = json;
+              chart = new Highcharts.Chart(options);
+          });
+          
+      
+      });
+  </script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
   
 </head>
 <body id="top" class="scrollspy" onload="Materialize.toast('Bienvenido <?php echo $user['name']?>', 3000, 'rounded')">
@@ -66,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="right hide-on-med-and-down ">
             <li><a class="hoverable" href="<?php echo base_url('mantenimiento'); ?>">Mantenimiento</a></li>
             
-            <li><a class="hoverable" href="#team">Contactenos</a></li>
+            <li><a class="hoverable" href="#team">Estadísticas</a></li>
             <li ><a  id="rowPerfil"class="dropdown-button hoverable" data-activates="dropdown1">  
               
               
@@ -123,219 +172,71 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!--Intro and service-->
 <div id="intro" class="section scrollspy">
+
   <div class="container">
-    <div class="row">
-      <div  class="col s12">
-        <h2 class="center header text_h2"><span class="span_h2"> Asociación Solidarista UTN CR  </span><br>Venta de Artículos promocionales</h2>
-      </div>
-      
-      <div  class="col s12 m6 l6">
-        <div class="center promo promo-example">
-          <!--  <i class="mdi-image-flash-on"></i> -->
-          <h5 class="promo-caption"> <span class="span_h2"> Misión </span></h5>
-          <?php 
-          $conexion =new mysqli("localhost", "root", "", "asoutn");
-          $query= "SELECT *FROM imagen_perfil ";
-          $resultado = $conexion->query($query);
-          while ($row = $resultado->fetch_assoc()) {
+    <div id="containerGrafico" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var options = {
+                chart: {
+                    renderTo: 'containerGrafico2',
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                    
+                },
+                title: {
+                    text: 'Resumen de ingresos por ventas'
+                },
+                tooltip: {
+                    formatter: function() {
+                        return '<b>' + this.point.name + '</b>: ' + this.y;
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            color: '#1B3069',
+                            connectorColor: '#f87600',
+                            formatter: function() {
+                                return '<b>' + this.point.name + '</b>: ' + this.y;
+                            }
+                            
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: []
+            };
+
+            $.getJSON("<?php echo base_url() ?>js/pie/data/data-pie-chartotro.php", function(json) {
+                options.series = json;
+                chart = new Highcharts.Chart(options);
+            });
             
-            
-            ?>
-            <tr>
-              
-              <td>  <img width="100px" height="100px"src="data:image/jpg;base64,<?php echo base64_encode($row['imagen']);?>" ></td>
-            </tr>
-            <?php 
-          } 
-          ?>
-          
-          <p class="light center">Ser una organización, que promueva el mejoramiento integral y la calidad de vida de sus asociados, procurando ser partícipe de su desarrollo mediante proyectos sociales, económicos y culturales según los intereses de la colectividad.  .</p>
-        </div>
-      </div>
-      
-      <div class="col s12 m6 l6">
-        <div class="center promo promo-example">
-          <!--  <i class="mdi-hardware-desktop-windows"></i> -->
-          <h5 class="promo-caption"><span class="span_h2"> Visión </span></h5>
-          
-          
-          
-          <p class="light center">Ser una organización solidarista abierta, transparente e identificada con los principios de ayuda mutua, justicia y paz social en armonía obrero patronal, brindando las mejores condiciones de crédito, servicios y beneficios para sus asociados..</p>
-        </div>
-      </div>
-    </div>
+        
+        });
+    </script>
+    <div id="containerGrafico2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
   </div>
 </div>
 
 
-<div class="col s12 m4 l4">
-  <div class="card">
-    <div style='width:300;height:300px;' class="card-image waves-effect waves-block waves-light ">
-      <img  whidth=100% height=100% class="activator" src="<?php echo base_url(); ?>img/project1.jpg">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-      <p><a href="#">Project link</a></p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-      <p>Here is some more information about this project that is only revealed once clicked on.</p>
-    </div>
-  </div>
-</div>
+  
+  
+  
 
-<!--
-<div class="parallax-container">
-<div class="parallax"><img src="img/parallax1.png"></div>
-</div>
 
--->
-<div class="parallax-container">
-  <div class="parallax"><img src="<?php echo base_url(); ?>img/parallax2.png"></div>
-</div>
-<!--Team-->
 
-<div class="section scrollspy" id="team">
-  <div class="container">
-    <h2 class="header text_b"> Our Team </h2>
-    <div class="row">
-      <div class="col s12 m3">
-        <div class="card card-avatar">
-          <div class="waves-effect waves-block waves-light">
-            <img class="activator" src="img/avatar1.png">
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">Flash <br/>
-              <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
-              <p>
-                <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                  <i class="fa fa-facebook-square"></i>
-                </a>
-                <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                  <i class="fa fa-twitter-square"></i>
-                </a>
-                <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                  <i class="fa fa-google-plus-square"></i>
-                </a>
-                <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                  <i class="fa fa-linkedin-square"></i>
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card card-avatar">
-            <div class="waves-effect waves-block waves-light">
-              <img class="activator" src="img/avatar2.png">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">Cat Woman<br/>
-                <small><em><a class="red-text text-darken-1" href="#">Designer</a></em></small>
-              </span>
-              <p>
-                <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                  <i class="fa fa-facebook-square"></i>
-                </a>
-                <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                  <i class="fa fa-twitter-square"></i>
-                </a>
-                <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                  <i class="fa fa-google-plus-square"></i>
-                </a>
-                <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                  <i class="fa fa-linkedin-square"></i>
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card card-avatar">
-            <div class="waves-effect waves-block waves-light">
-              <img class="activator" src="img/avatar3.png">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">
-                Capt. America <br/>
-                <small><em><a class="red-text text-darken-1" href="#">CMO</a></em></small></span>
-                <p>
-                  <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                    <i class="fa fa-facebook-square"></i>
-                  </a>
-                  <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                    <i class="fa fa-twitter-square"></i>
-                  </a>
-                  <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                    <i class="fa fa-google-plus-square"></i>
-                  </a>
-                  <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                    <i class="fa fa-linkedin-square"></i>
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 m3">
-            <div class="card card-avatar">
-              <div class="waves-effect waves-block waves-light">
-                <img class="activator" src="img/avatar4.png">
-              </div>
-              <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Robin<br/>
-                  <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
-                  <p>
-                    <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
-                      <i class="fa fa-facebook-square"></i>
-                    </a>
-                    <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                      <i class="fa fa-twitter-square"></i>
-                    </a>
-                    <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                      <i class="fa fa-google-plus-square"></i>
-                    </a>
-                    <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
-                      <i class="fa fa-linkedin-square"></i>
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!--Footer-->
+
+  
       <div class="myfooter"  id="contact">
         
         
-        <div class="itemfooter">
-          <form class="col s12" action="contact.php" method="post">
-            <div class="row">
-              <div class="input-field col s6">
-                <i class="mdi-action-account-circle prefix white-text"></i>
-                <input id="icon_prefix" name="name" type="text" class="validate white-text">
-                <label for="icon_prefix" class="white-text">Nombre</label>
-              </div>
-              <div class="input-field col s6">
-                <i class="mdi-communication-email prefix white-text"></i>
-                <input id="icon_email" name="email" type="email" class="validate white-text">
-                <label for="icon_email" class="white-text">Correo</label>
-              </div>
-              <div class="input-field col s12">
-                <i class="mdi-editor-mode-edit prefix white-text"></i>
-                <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-                <label for="icon_prefix2" class="white-text">Mensaje</label>
-              </div>
-              <div class="col offset-s7 s5">
-                <button class="btn waves-effect waves-light blue darken-4" type="submit">Enviar
-                  <i class="mdi-content-send right white-text"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-        
+      
         <div class="itemfooter">
           <h5 class="white-text">Social</h5>
           <ul>

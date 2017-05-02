@@ -24,14 +24,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $user = $_SESSION['user'];
   }
   $idUser= $user['email']; 
+  $idU= $user['id']; 
   $conexion =new mysqli("localhost", "root", "", "asoutn");
   $query= "SELECT *FROM imagen_perfil WHERE id_usuario = '$idUser'"; $resultado = $conexion->query($query);
   while ($row = $resultado->fetch_assoc()) {  
     $imagenPerfil = base64_encode($row['imagen']);
   }
-  $queryProductos= "SELECT productos.id as idProductoCarrito,productos.cantidad as CantidadInventario, usuario_producto.id, productos.imagen, productos.nombreProducto, SUM(usuario_producto.cantidad) as CantidadArticulos, productos.precio as PrecioUnitario,(productos.precio*SUM(usuario_producto.cantidad)) as PrecioFinal from usuario_producto Join productos on  usuario_producto.id_producto = productos.id AND usuario_producto.id_usuario = 5 and usuario_producto.estado = 'pendiente' GROUP by productos.nombreProducto ORDER by  productos.nombreProducto ASC ";
+  $queryProductos= "SELECT productos.id as idProductoCarrito,productos.cantidad as CantidadInventario, usuario_producto.id, productos.imagen, productos.nombreProducto, SUM(usuario_producto.cantidad) as CantidadArticulos, productos.precio as PrecioUnitario,(productos.precio*SUM(usuario_producto.cantidad)) as PrecioFinal from usuario_producto Join productos on  usuario_producto.id_producto = productos.id AND usuario_producto.id_usuario = $idU and usuario_producto.estado = 'pendiente' GROUP by productos.nombreProducto ORDER by  productos.nombreProducto ASC ";
   $resultadoproductos = $conexion->query($queryProductos);
-  $queryCarritoCont= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto WHERE estado ='Pendiente'";
+  $queryCarritoCont= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto WHERE estado ='Pendiente' and id_usuario=$idU";
   $resultadoCont = $conexion->query($queryCarritoCont);
 
   while ($row = $resultadoCont->fetch_assoc()) {  
@@ -176,12 +177,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </button>
   </div>
     <?php 
-    
-    echo $var1;
-    echo '<br>';
-    echo $var2;
-    echo '<br>';
-    
 
     } ?>
   
