@@ -18,12 +18,18 @@ class Mantenimiento extends CI_Controller {
    * map to /index.php/welcome/<method_name>
    * @see https://codeigniter.com/user_guide/general/urls.html
    */
-
+   /**
+   * METODO PARA CARGAR PAGINA DE MANTENIMIENTO
+   *
+   */
   public function pagmantenimiento()
   {
     $this->load->view('/Maintenance/mantenimiento');
   }
-  
+  /**
+  * METODO PARA CARGAR PAGINA DE ESTADISTICAS
+  *
+  */
   public function estadisticas()
   {
     $this->load->view('/Maintenance/estadisticas');
