@@ -25,7 +25,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body id="top" class="scrollspy">
   <div id="loader-wrapper">
     <div id="loader"></div>
-    
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
   </div>
@@ -41,8 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a class="dropdown-button hoverable" href="#!" data-activates="dropdown1">Entrar
               <i class="material-icons right">arrow_drop_down</i>
             </a>
-            <ul id="dropdown1" class="dropdown-content">
-              
+            <ul id="dropdown1" class="dropdown-content">  
               <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Iniciar sesión</a></li>
               <li class="divider"></li>
               <li><a class="hoverable" href="<?php echo base_url('registro'); ?>">Registrarse</a></li>
@@ -53,7 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li><a class="hoverable" href="#intro">Conocenos</a></li>
           <li><a class="hoverable" href="#productos">Productos</a></li>
           <li><a class="hoverable" href="<?php echo base_url('contactenos') ?>">Contáctenos</a></li>
-          
           <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Iniciar sesión</a></li>
           <li class="divider"></li>
           <li><a class="hoverable" href="<?php echo base_url('registro'); ?>">Registrarse</a></li>     
