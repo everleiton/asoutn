@@ -47,6 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                            <i class="material-icons right">arrow_drop_down</i>
                          </a>
                            <ul id="dropdown1" class="dropdown-content">
+                             
                                <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Iniciar sesión</a></li>
                                <li class="divider"></li>
                                <li><a class="hoverable" href="<?php echo base_url('registro'); ?>">Registrarse</a></li>
@@ -56,12 +57,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    
                    <ul id="nav-mobile" class="side-nav">
                      <li><a class="hoverable" href="#intro">Conocenos</a></li>
-                     
-                  
-                     <li><a class="hoverable" href="#team">Contactenos</a></li>
+                  <li><a class="hoverable" href="#productos">Productos</a></li>
+                     <li><a class="hoverable" href="<?php echo base_url('contactenos') ?>">Contáctenos</a></li>
+
+                     <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Iniciar sesión</a></li>
                      <li class="divider"></li>
-                     <li><a class="hoverable" href="#!">Iniciar sesión</a></li>
-                     <li><a class="hoverable" href="#!">Registrarse</a></li>      
+                     <li><a class="hoverable" href="<?php echo base_url('registro'); ?>">Registrarse</a></li>     
                    </ul>
                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                </div>
