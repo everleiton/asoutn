@@ -32,16 +32,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   $queryCarritoCont= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto WHERE estado ='Comprado'";
   $queryCarritoCont2= "SELECT count(DISTINCT id_producto) as count FROM usuario_producto WHERE estado ='pendiente'";
   $resultadoCont = $conexion->query($queryCarritoCont);$resultadoCont2 = $conexion->query($queryCarritoCont2);
-
+  
   while ($row = $resultadoCont2->fetch_assoc()) { $contador2= $row['count'];} 
   while ($row = $resultadoCont->fetch_assoc()) { $contador= $row['count'];}
   ?>
   <script type="text/javascript">
   function mostrar(){
     document.getElementById('misProductos').style.display = 'none';
-     document.getElementById('oculto').style.display = 'block';
-
-  
+    document.getElementById('oculto').style.display = 'block';
+    
+    
   }
   </script>
 </head>
@@ -65,14 +65,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <i class="material-icons right">arrow_drop_down</i>
             </a>
             <ul id="dropdown1" class="dropdown-content">
-                <li><a class="hoverable" href="<?php echo base_url('Producto/historial'); ?>">Historial de compras</a></li>
+              <li><a class="hoverable" href="<?php echo base_url('Producto/historial'); ?>">Historial de compras</a></li>
               <li class="divider"></li>
               <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Cerrar sesión</a></li>
             </ul>
           </li>
         </ul>
         <ul id="nav-mobile" class="side-nav">
-      </ul>
+        </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       </div>
     </div>
@@ -80,64 +80,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="section no-pad-bot" id="index-banner">    </div>
 
-  <div class=""><img src="<?php echo base_url(); ?>img/parallax4.png"></div>
+<div class=""><img src="<?php echo base_url(); ?>img/parallax4.png"></div>
 
 <div id="intro" class="section scrollspy">
   <?php
-    if(isset($msj)){
-   echo "<span class='mensajito'>".$msj."</span>";
+  if(isset($msj)){
+    echo "<span class='mensajito'>".$msj."</span>";
   } ?>
   <div  class="container">
     <?php
-
-       if ($contador=='0') {
-     ?>
-     <div id="MensajeNoHayNada"class="">
-       <div id="itemMNHN" class="row"></div>
-       <div id="itemMNHNCenter" class="">
-         <h4>De momento no has comprado ningun artículo.<br> <a id="refInicio" href="<?php echo base_url('productos') ?>">Seguir comprando...!</a> </h4>
-       </div>
-       <div id="itemMNHN"></div>
-       
+    
+    if ($contador=='0') {
+      ?>
+      <div id="MensajeNoHayNada"class="">
+        <div id="itemMNHN" class="row"></div>
+        <div id="itemMNHNCenter" class="">
+          <h4>De momento no has comprado ningun artículo.<br> <a id="refInicio" href="<?php echo base_url('productos') ?>">Seguir comprando...!</a> </h4>
+        </div>
+        <div id="itemMNHN"></div>
         
-     </div>
-     
-     
-     <?php 
-    }else{
-    
-    ?>
-    
-    <div id="misProductos" class="row">
-      <table id="tabla"class="centered striped bordered">
-        <thead>
-          <tr>
-            <th class="titulocolumnas" >Imagen</th>
-            <th class="titulocolumnas" >Nombre del producto</th>
-            <th class="titulocolumnas" >Cantidad</th>
-            <th class="titulocolumnas" >Precio Unitario</th>
-            <th class="titulocolumnas" >Total</th>
-            <th class="titulocolumnas" >Estado</th>
-          
-          </tr>
-        </thead>
+        
+      </div>
       
-        <tbody>
-          <?php $total = 0;
-          $pedidoNumero=0;
+      
+      <?php 
+    }else{
+      
+      ?>
+      
+      <div id="misProductos" class="row">
+        <table id="tabla"class="centered striped bordered">
+          <thead>
+            <tr>
+              <th class="titulocolumnas" >Imagen</th>
+              <th class="titulocolumnas" >Nombre del producto</th>
+              <th class="titulocolumnas" >Cantidad</th>
+              <th class="titulocolumnas" >Precio Unitario</th>
+              <th class="titulocolumnas" >Total</th>
+              <th class="titulocolumnas" >Estado</th>
+              
+            </tr>
+          </thead>
           
-          while ($row =$resultadoproductos->fetch_assoc()) { 
-            $imagenPro = base64_encode($row['imagen']);
-            $total += $row['PrecioFinal'];   
-             $pedidoNumero += $row['id'];
-            ?>
-            <tr >
-              <td><img class="materialboxed circle responsive-img" width="80px" height="80px"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > </td>
-              <td><?php echo $row['nombreProducto'];?></td>
-              <td><?php echo $row['CantidadArticulos'];?></td>
-              <td>₡<?php echo $row['PrecioUnitario'];?></td>
-              <td>₡<?php echo $row['PrecioFinal'];?></td>   
-              <td><?php echo $row['estado'];?></td>   
+          <tbody>
+            <?php $total = 0;
+            $pedidoNumero=0;
+            
+            while ($row =$resultadoproductos->fetch_assoc()) { 
+              $imagenPro = base64_encode($row['imagen']);
+              $total += $row['PrecioFinal'];   
+              $pedidoNumero += $row['id'];
+              ?>
+              <tr >
+                <td><img class="materialboxed circle responsive-img" width="80px" height="80px"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > </td>
+                <td><?php echo $row['nombreProducto'];?></td>
+                <td><?php echo $row['CantidadArticulos'];?></td>
+                <td>₡<?php echo $row['PrecioUnitario'];?></td>
+                <td>₡<?php echo $row['PrecioFinal'];?></td>   
+                <td><?php echo $row['estado'];?></td>   
                 <?php  } ?>
               </td>
               <tr>
@@ -145,45 +145,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th class="titulocolumnas"  >₡ <?php echo $total ?> </th>
                 <th> </th>
               </tr>
-            
+              
             </tr>
           </tbody>
         </table>
-      
-  </div>
-    <?php 
+        
+      </div>
+      <?php 
     } ?>
-  
-    </div>
-
+    
   </div>
+  
+</div>
 
 <div class="myfooter"  id="contact">
-
-    <h5 class="white-text">Social</h5>
-    <ul>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-facebook-square white-text"></i> Facebook
-        </a>
-      </li>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-twitter-square white-text"></i> Twitter
-        </a>
-      </li>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-instagram white-text"aria-hidden="true"></i> Instagram
-        </a>
-      </li>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-snapchat" aria-hidden="true"></i> Snapchat
-        </a>
-    </li>
-      </ul>
-  </div>
+  
+  
 </div>
 <!--  Scripts-->
 <script src="<?php echo base_url(); ?>min/plugin-min.js"></script>
