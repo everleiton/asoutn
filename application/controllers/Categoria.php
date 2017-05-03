@@ -19,27 +19,22 @@ class Categoria extends CI_Controller {
   * @see https://codeigniter.com/user_guide/general/urls.html
   */
   
+
   
-  
-  
-  
-  
+  /**
+  * METODO PARA INSERTAR CATEGORIAS
+  *
+  */
   public function insert()
   {
-    
     $this->load->model('Categoria_model');
     $categoria['nombre_categoria'] = $this->input->post('nuevaCategoria');
-    
-    
     $row = $this->Categoria_model->insertar($categoria);
-    
     if (isset($row))
     {
-    
       $data['msj'] = "Se ha insertado exitosamente";
       $this->load->view('/Maintenance/mantenimientoProductos',$data);
     }
-    
    else 
   { 
     $data['msj'] = "No se ha insertado";
