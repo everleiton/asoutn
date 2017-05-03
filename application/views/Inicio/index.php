@@ -53,8 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                <li><a class="hoverable" href="<?php echo base_url('registro'); ?>">Registrarse</a></li>
                            </ul>
                      </li>
-                   </ul>
-                   
+                   </ul>         
                    <ul id="nav-mobile" class="side-nav">
                      <li><a class="hoverable" href="#intro">Conocenos</a></li>
                   <li><a class="hoverable" href="#productos">Productos</a></li>
@@ -70,10 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    </nav>
 </div>
 
-<!--Hero-->
 <div class="section no-pad-bot" id="index-banner">    </div>
-
-<!--  <div class="container">-->
 <div id="wowslider-container1">
   <div class="textohastag">
     <h1 class="text_h center header cd-headline letters type">
@@ -81,7 +77,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span class="cd-words-wrapper waiting">
             <b class="is-visible">UTN</b>
             <b>UPública</b>
-      
         </span>
     </h1>
   </div>
@@ -90,32 +85,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		<li><img src="images/img1.png" alt="wow slider" title="img1" id="wows1_1"/></li>
     		<li><img src="images/img2.png" alt="img2" title="img2" id="wows1_2"/></li>
     	</ul></div>
-  
     	<div class="ws_shadow"></div>
     	</div>	
-      
     	<script type="text/javascript" src="js/wowslider.js"></script>
     	<script type="text/javascript" src="js/script.js"></script>
-      
-
-<!--Intro and service-->
 <div id="intro" class="section scrollspy">
-  <!-- Modal Trigger -->
-  
     <div class="container">
         <div class="row">
             <div  class="col s12">
                 <h2 class="center header text_h2"><span class="span_h2"> Asociación Solidarista UTN CR  </span><br>Venta de Artículos promocionales</h2>
             </div>
-
             <div  class="col s12 m6 l6">
                 <div class="center promo promo-example">
                     <!--  <i class="mdi-image-flash-on"></i> -->
                     <h5 class="promo-caption"> <span class="span_h2"> Misión </span></h5>
                     <p class="light center">Ser una organización, que promueva el mejoramiento integral y la calidad de vida de sus asociados, procurando ser partícipe de su desarrollo mediante proyectos sociales, económicos y culturales según los intereses de la colectividad.  .</p>
                 </div>
-            </div>
-            
+            </div>  
             <div class="col s12 m6 l6">
                 <div class="center promo promo-example">
                   <!--  <i class="mdi-hardware-desktop-windows"></i> -->
@@ -126,8 +112,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-
-<
 <div class="section scrollspy" id="productos">
     <div class="container">
         <h2 class="header text_b">Conoce nuestros productos</h2>
@@ -226,13 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 <div class="myfooter"  id="contact">
-
 </div>
-
-
-
-
-
     <!--  Scripts-->
     <script src="min/plugin-min.js"></script>
     <script src="min/custom-min.js"></script>
