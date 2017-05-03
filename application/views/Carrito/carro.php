@@ -47,8 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
   }
   </script>
-  
-  
+
 </head>
 <body id="top" class="scrollspy" >
   <div id="loader-wrapper">
@@ -84,9 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </nav>
 </div>
 <div class="section no-pad-bot" id="index-banner">    </div>
-
   <div class=""><img src="<?php echo base_url(); ?>img/parallax3.png"></div>
-
 <div id="intro" class="section scrollspy">
   <?php
     if(isset($msj)){
@@ -103,16 +100,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <h4>De momento no tienes artículos en tu carrito.<br> <a id="refInicio" href="<?php echo base_url('productos') ?>">Seguir comprando...!</a> </h4>
        </div>
        <div id="itemMNHN"></div>
-       
-        
      </div>
-     
-     
      <?php 
     }else{
-    
-    ?>
-    
+  ?>  
     <div id="misProductos" class="row">
       <table id="tabla"class="centered striped bordered">
         <thead>
@@ -125,13 +116,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th class="titulocolumnas" >Opciones</th>
           </tr>
         </thead>
-      
         <tbody>
           <?php $total = 0;
           $pedidoNumero=0;
           $var1 ="";
           $var2 = "";
-             //$cantidadEnInventario=array();
           while ($row =$resultadoproductos->fetch_assoc()) { 
             $imagenPro = base64_encode($row['imagen']);
             $total += $row['PrecioFinal'];   
@@ -139,12 +128,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $cantidadActual=    $row['CantidadInventario'] -$row['CantidadArticulos'];
             $var1 = $var1 . $row['idProductoCarrito']  .',';
               $var2 = $var2 . $cantidadActual .',';
-
-          
-          
             ?>
-            <tr >
-              
+            <tr >  
               <td><img class="circle responsive-img" width="80px" height="80px"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > </td>
               <td><?php echo $row['nombreProducto'];?></td>
               <td><?php echo $row['CantidadArticulos'];?></td>
@@ -156,9 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <input class="inputsInvisibles"type="text" name="idProductoCarrito" value="<?php echo $row['id'];?>">
                   </div>
                   <button type="submit" class="waves-effect red waves-light btn" name="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                
-                    
-                  </form> 
+</form> 
                 </td>
                 <?php  } ?>
               </td>
@@ -167,7 +150,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th class="titulocolumnas"  >₡ <?php echo $total ?> </th>
                 <th> </th>
               </tr>
-          
             </tr>
           </tbody>
         </table>
@@ -176,9 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </button>
   </div>
     <?php 
-
     } ?>
-  
     </div>
   <div id='oculto' style='display:none;'>
       <div class="container">
@@ -254,59 +234,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <input type="text" class="inputsInvisibles"name="montocancelar" value="₡<?php echo $total ?>">
                   <label for="montocancelar" class="">Monto a Cancelar ₡ <?php echo $total ?></label>
                 </div>
-                <div class="input-field col s8">
-                  
-                  <div class="inputsInvisibles">
-                    
-                    <!--input class="inputsInvisibles"type="" name="cantidadEnInventario[]" value="<?php //echo $cantidadEnInventario?>"-->
+                <div class="input-field col s8">  
+                  <div class="inputsInvisibles">  
                     <input type="hidden" name="var1" value="<?php echo $var1 ?>">
                     <input type="hidden" name="var2" value="<?php echo $var2 ?>">
-
                     <input class="inputsInvisibles"type="text" name="nombreUsuario" value="<?php echo $user['name'];?>">
                     <input class="inputsInvisibles"type="text" name="correoUsuario" value="<?php echo $user['email'];?>">
                     <input class="inputsInvisibles"type="text" name="idUsuario" value="<?php echo $user['id'];?>">
-                    
                   </div>
                   <button width="150px"class="btn cyan waves-effect waves-light" type="submit" name="action">Enviar pedido
                         <i class="mdi-content-send"></i>
-
                 </button>
                 </div>
               </div>  
-              
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 <div class="myfooter"  id="contact">
-
-    <h5 class="white-text">Social</h5>
-    <ul>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-facebook-square white-text"></i> Facebook
-        </a>
-      </li>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-twitter-square white-text"></i> Twitter
-        </a>
-      </li>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-instagram white-text"aria-hidden="true"></i> Instagram
-        </a>
-      </li>
-      <li>
-        <a class="white-text" href="">
-          <i class="small fa fa-snapchat" aria-hidden="true"></i> Snapchat
-        </a>
-    </li>
-      </ul>
-  </div>
+  
 </div>
 <!--  Scripts-->
 <script src="<?php echo base_url(); ?>min/plugin-min.js"></script>
