@@ -15,56 +15,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>min/custom-min.css" type="text/css" rel="stylesheet" >
     <link href="<?php echo base_url(); ?>css/materialize.min.css" type="text/css" rel="stylesheet" >
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" />
-    <script src="https://use.fontawesome.com/df85f162da.js"></script>
-
-    
-    
+    <script src="https://use.fontawesome.com/df85f162da.js"></script>  
 </head>
 <body id="top" class="scrollspy">
-
-<!-- Pre Loader -->
 <div id="loader-wrapper">
     <div id="loader"></div>
- 
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
- 
 </div>
-
-<!--Navigation-->
  <div class="navbar-fixed">
     <nav id="nav_f" class="blue_color" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
             <a href="<?php echo base_url();?>" id="logo-container" class="brand-logo">ASOUTN</a>
                 <ul class="right hide-on-med-and-down ">
-              
-              
-                      <li><a class="hoverable" href="<?php echo site_url(); ?>">Volver al inicio</a></li>
-        
-                  
-                </ul>
-                <ul id="nav-mobile" class="side-nav">
-            
+  <li><a class="hoverable" href="<?php echo site_url(); ?>">Volver al inicio</a></li>
+  </ul>
+  <ul id="nav-mobile" class="side-nav">          
                   <li class="divider"></li>
-                  
-                <li><a class="hoverable" href="<?php echo site_url(); ?>User/entrar">Iniciar sesión</a></li>
-            
-                    
-                    
-                    
-                    
-                </ul>
+        <li><a class="hoverable" href="<?php echo site_url(); ?>">Volver al inicio</a></li>
+  </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
         </div>
     </nav>
 </div>
-
-<!--Hero-->
 <div class="section no-pad-bot" id="index-banner">    </div>
-
-
 <div class="section scrollspy" id="team">
     <div class="container">
       <div id="login-page" class="row">
@@ -104,24 +80,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <i class="material-icons right">send</i>
             </button>
             </div>
-          
           </div>
         </form>
       </div>
     </div>
-    
       </div>
-    
 </div>
-
 <div class="myfooter"  id="contact">
-
-    
-    
-
 </div>
-
-
     <!--  Scripts-->
     <script src="<?php echo base_url(); ?>min/plugin-min.js"></script>
     <script src="<?php echo base_url(); ?>min/custom-min.js"></script>
