@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <label for='password'>Ingresa tu contraseña</label>
                 </div>
                 <label style='float: right;'>
-                  <a class='blue-text' href='#!'><b>¿Olvidaste tu contraseña?</b></a>
+                  <a class='blue-text'  href="<?php echo site_url(); ?>User/registro"><b>¿No estas registrado? Registrate aquí!</b></a>
                 </label>
               </div>
               <div class="row">
@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </form>
           </div>
         </div>
-        <a href="<?php echo site_url(); ?>User/registro">Crear una cuenta</a>
+        
       </center>
     </div>
   </div>

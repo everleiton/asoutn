@@ -137,8 +137,7 @@ justify-content: space-between;
 align-items: center;
 text-align: center;
 white-space:nowrap;
-  text-overflow: ellipsis;
-  width: 200px;
+  
 }
 th.titulocolumnas{
 

@@ -26,8 +26,8 @@ class User_model extends CI_Model{
 	* METODO PARA INICIAR SESION
 	*
 	*/
-	function login($email, $password)
-	{/*
+/*	function login($email, $password)
+	{
 		$this->db->select('id, email, password, name, photo, tipousuario');
 		$this ->db-> from('usuarios');
 		$this ->db-> where('email', $username);

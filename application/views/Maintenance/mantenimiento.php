@@ -17,24 +17,24 @@
   if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
   }
-  $idUser= $user['email']; 
+  $idUser= $user['email'];
   $conexion =new mysqli("localhost", "root", "", "asoutn");
-  $query= "SELECT *FROM imagen_perfil WHERE id_usuario = '$idUser'"; 
+  $query= "SELECT *FROM imagen_perfil WHERE id_usuario = '$idUser'";
   $resultadoUsuario = $conexion->query($query);
   $queryCategorias= "SELECT *FROM lista_categoria ";
   $queryProductos= "SELECT lista_categoria.nombre_categoria as categoria, productos.id, productos.nombreProducto, productos.codProducto, productos.cantidad, productos.precio, productos.descripcion, productos.imagen from productos join lista_categoria on productos.categoria = lista_categoria.id ORDER by productos.nombreProducto";
   $resultadocategorias = $conexion->query($queryCategorias);
   $resultadoproductos = $conexion->query($queryProductos);
-  while ($row = $resultadoUsuario->fetch_assoc()) {  
+  while ($row = $resultadoUsuario->fetch_assoc()) {
     $imagenPerfil = base64_encode($row['imagen']);
     header('Cache-Control: no-cache, no-store, must-revalidate');
     header('Pragma: no-cache');
     $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
     $this->output->set_header("Pragma: no-cache");
-    
+
     ?>
     <script type="text/javascript">
-    
+
     </script>
     <script type="text/javascript">
     function mostrar(id){
@@ -52,7 +52,7 @@
       });
     }
     </script>
-    
+
 </head>
   <body id="top" class="scrollspy">
     <div id="loader-wrapper">
@@ -68,14 +68,14 @@
             <ul class="right hide-on-med-and-down ">
               <li><a class="hoverable" href=""onmouseDown="alert('La opción seleccionada, hace referencia a la página actual.')">Mantenimiento</a></li>
               <li><a class="hoverable" href="<?php echo base_url('estadisticas'); ?>">Estadísticas</a></li>
-              <li ><a  id="rowPerfil"class="dropdown-button hoverable" data-activates="dropdown1">  
-                <img class="circle responsive-img" width="50px" height="50px"src="data:image/jpg;base64,<?php echo $imagenPerfil;?>" > 
+              <li ><a  id="rowPerfil"class="dropdown-button hoverable" data-activates="dropdown1">
+                <img class="circle responsive-img" width="50px" height="50px"src="data:image/jpg;base64,<?php echo $imagenPerfil;?>" >
                 <?php echo $user['name']; ?>
                 <i class="material-icons right">arrow_drop_down</i>
               </a>
               <ul id="dropdown1" class="dropdown-content">
                 <li>
-                  
+
                 </li>
                 <li class="divider"></li>
                 <li><a class="hoverable" href="<?php echo base_url('inicioSesion'); ?>">Cerrar sesión</a></li>
@@ -87,7 +87,7 @@
             <li><a class="hoverable" href="#team">Contactenos</a></li>
             <li class="divider"></li>
             <li><a class="hoverable" href="#!">Iniciar sesión</a></li>
-            <li><a class="hoverable" href="#!">Registrarse</a></li>      
+            <li><a class="hoverable" href="#!">Registrarse</a></li>
           </ul>
           <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         </div>
@@ -96,7 +96,7 @@
   </div>
   <div class="section no-pad-bot" id="index-banner">    </div>
   <div id="intro" class="section scrollspy">
-    <div class="materialboxed"><img  src="<?php echo base_url(); ?>img/parallax5.png" width="100%"></div>  
+    <div class="materialboxed"><img  src="<?php echo base_url(); ?>img/parallax5.png" width="100%"></div>
     <div class="container">
       <div  class="col s12">
         <h4 class="center  text_h4"><span class="span_h2"> Mantenimiento Productos  <i class="fa fa-cog fa-spin fa-2x fa-fw"></i>
@@ -105,10 +105,11 @@
           <br>
         </div>
       </div>
+
       <div class="container">
         <ul class="collapsible popout" data-collapsible="accordion">
           <li>
-            <div class="collapsible-header"><i class="material-icons ">turned_in_not </i>Mantenimiento de Categorías</div><!--////////Categorías//////-->
+            <div class="collapsible-header avtive"><i class="material-icons ">turned_in_not </i>Mantenimiento de Categorías</div>
             <div class="collapsible-body">
               <div class="container">
                 <form class="col s12" method="post"  action="<?php echo base_url('agregarCategoria'); ?>">
@@ -126,7 +127,7 @@
             </div>
           </li>
           <li>
-            <div class="collapsible-header" ><i class="material-icons ">shopping_basket</i>Mantenimiento de Productos</div> <!--//////Productos//////-->
+            <div class="collapsible-header" ><i class="material-icons ">shopping_basket</i>Mantenimiento de Productos</div> 
             <div class="collapsible-body">
               <div class="container">
                 <div class="row">
@@ -181,7 +182,7 @@
                               <input required  name="photo_nombre" class="file-path validate" type="text" placeholder="Imágen del producto">
                             </div>
                           </div>
-                        </div>  
+                        </div>
                         <br />
                         <center>
                           <div class='row'>
@@ -192,7 +193,7 @@
                     </div>
                     <div class="row">
                       <h3>Productos</h3>
-                      <table id="tabla"class="striped bordered">  
+                      <table id="tabla"class="striped bordered">
                         <thead>
                           <tr>
                             <th class="titulocolumnas" >Código</th>
@@ -203,10 +204,10 @@
                             <th class="titulocolumnas" >Precio</th>
                             <th class="titulocolumnas" >Imagen ilustrativa</th>
                             <th class="titulocolumnas"  COLSPAN="2">Opciones</th>
-                          </tr>  
+                          </tr>
                         </thead>
                         <tbody>
-                          <?php    while ($row = $resultadoproductos->fetch_assoc()) { 
+                          <?php    while ($row = $resultadoproductos->fetch_assoc()) {
                             $imagenPro = base64_encode($row['imagen']);
                             ?>
                             <tr >
@@ -216,18 +217,18 @@
                               <td><?php echo $row['descripcion'];?></td>
                               <td><?php echo $row['cantidad'];?></td>
                               <td><?php echo $row['precio'];?></td>
-                              <td><img class="materialboxed responsive-img" width="80px" height="80px"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > </td>                            
+                              <td><img class="materialboxed responsive-img" width="80px" height="80px"src="data:image/jpg;base64,<?php echo $imagenPro;?>" > </td>
                               <!-- aqui se edita-->
-                              <td>   <button id="botonEliminar" type="" class="waves-effect blue waves-light btn" onclick="mostrar(<?php echo $row['id'];?>)" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>  </form> 
-                              </td> 
+                              <td>   <button id="botonEliminar" type="" class="waves-effect blue waves-light btn" onclick="mostrar(<?php echo $row['id'];?>)" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>  </form>
+                              </td>
                               <!-- aqui se elimina-->
-                              <td> 
+                              <td>
                                 <form class="" action="<?php echo base_url('/Producto/eliminarProducto'); ?>" method="post">
                                   <div class="inputsInvisibles">
                                     <input class="inputsInvisibles"type="text" name="idProducto" value="<?php echo $row['id'];?>">
                                   </div>
                                   <button id="botonEliminar" type="submit" class="waves-effect red waves-light btn" name="button"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                </form> 
+                                </form>
                               </td>
                             </tr>
                             <tr>
@@ -263,7 +264,7 @@
                               </td>
                             </tr>
                             <?php  } ?>
-                            
+
                           </tbody>
                         </table>
                       </div>
@@ -271,12 +272,14 @@
                   </div>
                 </div>
               </li>
-              
+
             </ul>
           </div>
-          
+
         </div>
-        
+
+
+
         <div class="myfooter"  id="contact">
         </div>
         <!--  Scripts-->
@@ -284,37 +287,29 @@
         <script src="<?php echo base_url(); ?>min/custom-min.js"></script>
         <script src="<?php echo base_url(); ?>js/js.js"></script>
         <script src="https://use.fontawesome.com/df85f162da.js"></script>
-        
+        <!-- Compiled and minified CSS -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
       </body>
       </html>
-      
-      
-      
-      
+
+
+
+
       <!--
-      <?php 
+      <?php
       //$conexion =new mysqli("localhost", "root", "", "asoutn");
       //$query= "SELECT *FROM imagen_perfil ";
       //$resultado = $conexion->query($query);
       //while ($row = $resultado->fetch_assoc()) {
-      
-      
+
+
       ?>
       <tr>
-      
+
       <td>  <img width="100px" height="100px"src="data:image/jpg;base64,<?php //echo base64_encode($row['imagen']);?>" ></td>
     </tr>
-    <?php 
-  } 
+    <?php
+  }
   ?>
 -->
-
-
-
-
-
-
-
-
-
-

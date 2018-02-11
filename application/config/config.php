@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/asoutn/';
+$config['base_url'] = 'http://utn.ac.cr:8080/asoutn/';
 
 /*
 |--------------------------------------------------------------------------

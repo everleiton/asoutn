@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </nav>
 </div>
->
+
 <div class="section no-pad-bot" id="index-banner">    </div>
 
 <div id="wowslider-container1">
@@ -114,7 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <div class="card">
                     <div class="card-content">
                       <span class="card-title activator grey-text text-darken-4 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Descripción"><?php echo $row['nombreProducto'];?><i class="mdi-navigation-more-vert right"></i></span>
-                      <input style="text-align: center"class=" buttonCompra white-text" type="" name="" value="Precio: ₡<?php echo $row['precio'];?>">
+                      <input style="text-align: center"class=" buttonCompra white-text" type="BUTTON" name="" value="Precio: ₡<?php echo $row['precio'];?>">
                     </div>
                     <div class="card-reveal">
                       <span class="card-title grey-text text-darken-4"><?php echo $row['nombreProducto'];?> <i class="mdi-navigation-close right"></i></span>
